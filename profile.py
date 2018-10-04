@@ -36,7 +36,7 @@ prefixForIP = "192.168.1."
 
 link = request.LAN("lan")
 
-for i in range(6):
+for i in range(15):
   if i == 0:
     node = request.XenVM("head")
     node.routable_control_ip = "true"
@@ -58,6 +58,16 @@ for i in range(6):
   
   node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/passwordless.sh"))
   node.addService(pg.Execute(shell="sh", command="sudo /local/repository/passwordless.sh"))
+  
+  if i == 0:
+     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_head.sh"))
+      
+  if i == 2:
+     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_Storage.sh"))
+  
+  if i > 2:
+    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_compute.sh"))
+    
   node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/install_mpi.sh"))
   node.addService(pg.Execute(shell="sh", command="sudo /local/repository/install_mpi.sh"))
   
