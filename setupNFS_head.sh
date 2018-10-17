@@ -6,7 +6,11 @@ sudo yum install portmap
 chkconfig --level 35 portmap on
 chkconfig --level 35 nfs on
 
-mkdir /software
+sudo mkdir /software
+
+sudo systemctl enable nfs-server.service
+sudo systemctl start nfs-server.service
+
 vi /etc/exports
 /software 192.168.1.3(rw,sync,no_root_squash)
 /software 192.168.1.4(rw,sync,no_root_squash)
