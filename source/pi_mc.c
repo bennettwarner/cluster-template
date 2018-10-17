@@ -64,6 +64,7 @@ int main(int argc, char* argv[])
     printf("the estimation of PI is: %f\n Process %d took: %lf \n", piEstimate, MPI_rank, TotalTime);
   }
 
+	
   MPI_Finalize();
   return 0;
 }
