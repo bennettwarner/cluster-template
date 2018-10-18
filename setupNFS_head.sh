@@ -4,10 +4,12 @@ sudo yum -y install portmap
 /etc/init.d/portmap start
 /etc/init.d/nfs start
 
-sudo mkdir -p /software
 
 sudo chkconfig --level 35 portmap on
 sudo chkconfig --level 35 nfs on
+
+sudo mkdir -p /software
+sudo chmod 777 /software
 
 sudo systemctl enable nfs-server.service
 sudo systemctl start nfs-server.service
