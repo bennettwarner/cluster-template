@@ -6,7 +6,7 @@ sudo mkdir -p /users/al844976/software
 sudo mkdir -p /users/al844976/scratch
 
 sudo mount -t nfs 192.168.1.1:/software /users/al844976/software
-sudo mount -t nfs 192.168.1.1:/software /users/al844976/scratch
+sudo mount -t nfs 192.168.1.3:/software /users/al844976/scratch
 echo '
 192.168.1.1:/software /users/al844976/software  nfs defaults 0 0' >> /etc/fstab
 echo '
