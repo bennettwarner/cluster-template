@@ -40,14 +40,25 @@ for i in range(15):
   if i == 0:
     node = request.XenVM("head")
     node.routable_control_ip = "true"
+    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_head.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/install_mpi.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountHead.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setupNFS_head.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/mountHead.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/install_mpi.sh"))
   elif i == 1:
     node = request.XenVM("metadata")
   elif i == 2:
     node = request.XenVM("storage")
+    node.addService(pg.Execute(shell="sh", command="sudo su al844976 -c 'cp /local/repository/source/* /scratch'"))
+    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountHead.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/mountHead.sh"))
   else:
     node = request.XenVM("compute-" + str(i-2))
     node.cores = 4
     node.ram = 4096
+    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountHead.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/mountHead.sh"))
     
   node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
   
@@ -59,26 +70,11 @@ for i in range(15):
   node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/passwordless.sh"))
   node.addService(pg.Execute(shell="sh", command="sudo /local/repository/passwordless.sh"))
   
-  if i == 0:
-     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_head.sh"))
-     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/install_mpi.sh"))
-     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/install_mpi.sh"))
-      
-  if i == 2:
-     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_Storage.sh"))
-     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountStorage.sh"))
-  
-  if i != 1 or i != 2:
-    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountHead.sh"))
-    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountStorage.sh"))
-  
-
   
   # This code segment is added per Benjamin Walker's solution to address the StrictHostKeyCheck issue of ssh
   node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/ssh_setup.sh"))
-  node.addService(pg.Execute(shell="sh", command="sudo -H -u lngo bash -c '/local/repository/ssh_setup.sh'"))
- 
-  node.addService(pg.Execute(shell="sh", command="sudo su lngo -c 'cp /local/repository/source/* /users/root'"))
+  node.addService(pg.Execute(shell="sh", command="sudo -H -u al844976 bash -c '/local/repository/ssh_setup.sh'"))
+
   
 # Print the RSpec to the enclosing page.
 pc.printRequestRSpec(request)
