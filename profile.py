@@ -36,7 +36,7 @@ prefixForIP = "192.168.1."
 
 link = request.LAN("lan")
 
-for i in range(5):
+for i in range(0,4):
   if i == 0:
     node = request.XenVM("head")
     node.routable_control_ip = "true"
@@ -61,8 +61,10 @@ for i in range(5):
     node.ram = 4096
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountHead.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/mountHead.sh"))
-    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_Storage.sh"))
-    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setupNFS_Storage.sh"))
+    #node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_Storage.sh"))
+    #node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setupNFS_Storage.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/* /scratch"))
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/* users/al844976/scratch"))
     
   node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
   
