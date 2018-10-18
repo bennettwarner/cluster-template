@@ -50,10 +50,10 @@ for i in range(5):
     node = request.XenVM("metadata")
   elif i == 2:
     node = request.XenVM("storage")
-    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountHead.sh"))
-    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/mountHead.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_Storage.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setupNFS_Storage.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountHead.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/mountHead.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/* /scratch"))
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/* users/al844976/scratch"))
   else:
