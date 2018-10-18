@@ -61,6 +61,8 @@ for i in range(15):
   
   if i == 0:
      node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_head.sh"))
+     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/install_mpi.sh"))
+     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/install_mpi.sh"))
       
   if i == 2:
      node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_Storage.sh"))
@@ -70,8 +72,7 @@ for i in range(15):
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountHead.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountStorage.sh"))
   
-  node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/install_mpi.sh"))
-  node.addService(pg.Execute(shell="sh", command="sudo /local/repository/install_mpi.sh"))
+
   
   # This code segment is added per Benjamin Walker's solution to address the StrictHostKeyCheck issue of ssh
   node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/ssh_setup.sh"))
