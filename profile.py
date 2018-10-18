@@ -50,9 +50,9 @@ for i in range(5):
     node = request.XenVM("metadata")
   elif i == 2:
     node = request.XenVM("storage")
-    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/* /scratch"))
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountHead.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/mountHead.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/* /scratch"))
   else:
     node = request.XenVM("compute-" + str(i-2))
     node.cores = 4
