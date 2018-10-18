@@ -8,6 +8,7 @@ sudo chkconfig --level 35 portmap on
 sudo chkconfig --level 35 nfs on
 
 sudo mkdir /software
+sudo chmod 777 /software
 
 sudo systemctl enable nfs-server.service
 sudo systemctl start nfs-server.service
@@ -26,6 +27,7 @@ echo '/software 192.168.1.3(rw,sync,no_root_squash)
 /software 192.168.1.14(rw,sync,no_root_squash)
 /software 192.168.1.15(rw,sync,no_root_squash)' >> /etc/exports
 
+sudo exportfs -a
 
 #info found:
 #https://www.tecmint.com/how-to-setup-nfs-server-in-linux/
