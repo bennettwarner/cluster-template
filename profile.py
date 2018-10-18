@@ -40,10 +40,10 @@ for i in range(5):
   if i == 0:
     node = request.XenVM("head")
     node.routable_control_ip = "true"
-    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_head.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_Storage.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/install_mpi.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountHead.sh"))
-    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setupNFS_head.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setupNFS_Storage.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/mountHead.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/install_mpi.sh"))
   elif i == 1:
