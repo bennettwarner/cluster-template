@@ -61,6 +61,7 @@ for i in range(0,5):
     node.ram = 4096
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/client.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/client.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/* /scratch"))
     #node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_Storage.sh"))
     #node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setupNFS_Storage.sh"))
     #node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountStorage.sh"))
