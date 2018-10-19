@@ -2,8 +2,8 @@ set -x
 sudo yum -y install nfs-utils nfs-utils-lib
 
 
-sudo mkdir -p /software
-sudo mkdir -p /scratch
+sudo mkdir /software
+sudo mkdir /scratch
 sudo chmod 777 /software
 sudo chmod 777 /scratch
 sudo mount -t nfs 192.168.1.1:/software /software
