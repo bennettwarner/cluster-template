@@ -7,8 +7,8 @@ sudo chmod 777 /users/al844976/software
 sudo mkdir -p /users/al844976/scratch
 sudo chmod 777 /users/al844976/scratch
 
-systemctl enable nfs-server
-service nfs start
+sudo systemctl enable nfs-server
+sudo service nfs start
 
 sudo mount -t nfs 192.168.1.1:/software /users/al844976/software
 sudo mount -t nfs 192.168.1.3:/scratch /users/al844976/scratch
