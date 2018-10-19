@@ -13,7 +13,7 @@ sudo chmod 777 /scratch
 sudo systemctl enable nfs-server.service
 sudo systemctl start nfs-server.service
 
-echo '
+echo "
 /scratch 192.168.1.3(rw,sync,no_root_squash)
 /scratch 192.168.1.4(rw,sync,no_root_squash)
 /scratch 192.168.1.5(rw,sync,no_root_squash)
@@ -26,7 +26,7 @@ echo '
 /scratch 192.168.1.12(rw,sync,no_root_squash)
 /scratch 192.168.1.13(rw,sync,no_root_squash)
 /scratch 192.168.1.14(rw,sync,no_root_squash)
-/scratch 192.168.1.15(rw,sync,no_root_squash)' >> /etc/exports
+/scratch 192.168.1.15(rw,sync,no_root_squash)" >> /etc/exports
 
 sudo exportfs -a
 
