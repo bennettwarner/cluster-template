@@ -74,13 +74,13 @@ for i in range(0,15):
   iface.addAddress(pg.IPv4Address(prefixForIP + str(i + 1), "255.255.255.0"))
   link.addInterface(iface)
   
-  node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/passwordless.sh"))
+  node.addService(pg.Execute(shell="sh", command="sudo chmod 777 /local/repository/passwordless.sh"))
   node.addService(pg.Execute(shell="sh", command="sudo /local/repository/passwordless.sh"))
   
   
   # This code segment is added per Benjamin Walker's solution to address the StrictHostKeyCheck issue of ssh
-  node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/ssh_setup.sh"))
-  node.addService(pg.Execute(shell="sh", command="sudo -H -u al844976 bash -c '/local/repository/ssh_setup.sh'"))
+  #node.addService(pg.Execute(shell="sh", command="sudo chmod 777 /local/repository/ssh_setup.sh"))
+  #node.addService(pg.Execute(shell="sh", command="sudo -H -u al844976 bash -c '/local/repository/ssh_setup.sh'"))
 
   
 # Print the RSpec to the enclosing page.
