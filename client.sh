@@ -1,5 +1,6 @@
 set -x
 sudo yum -y install nfs-utils nfs-utils-lib
+sudo yum -y install portmap
 
 sudo service nfs start
 systemctl enable nfs-server
