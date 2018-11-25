@@ -4,6 +4,11 @@ sudo yum -y install nfs-utils nfs-utils-lib
 sudo service nfs start
 systemctl enable nfs-server
 
+/etc/init.d/portmap start
+/etc/init.d/nfs start
+sudo chkconfig --level 35 portmap on
+sudo chkconfig --level 35 nfs on
+
 sudo mkdir /software
 sudo mkdir /scratch
 sudo chmod 777 /software
