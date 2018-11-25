@@ -40,12 +40,19 @@ for i in range(0,15):
   if i == 0:
     node = request.XenVM("head")
     node.routable_control_ip = "true"
+    
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_head.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/install_mpi.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountHead.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setupNFS_head.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/mountHead.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/install_mpi.sh"))
+    
+    node.addService(pg.Execute(shell="sh", command="sudo chmod 777 /local/repository/passwordless.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/passwordless.sh"))
+    
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/* /scratch"))
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/* /users/al844976/scratch"))
   elif i == 1:
     node = request.XenVM("metadata")
   elif i == 2:
@@ -73,9 +80,9 @@ for i in range(0,15):
   iface.component_id = "eth1"
   iface.addAddress(pg.IPv4Address(prefixForIP + str(i + 1), "255.255.255.0"))
   link.addInterface(iface)
-  
-  node.addService(pg.Execute(shell="sh", command="sudo chmod 777 /local/repository/passwordless.sh"))
-  node.addService(pg.Execute(shell="sh", command="sudo /local/repository/passwordless.sh"))
+  if i != 0:
+    node.addService(pg.Execute(shell="sh", command="sudo chmod 777 /local/repository/passwordless.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/passwordless.sh"))
   
   
   # This code segment is added per Benjamin Walker's solution to address the StrictHostKeyCheck issue of ssh
