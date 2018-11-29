@@ -16,7 +16,7 @@ module load mpi/gcc_openmpi
 cd $scratch
 mpicc hello.c
 
-for i in {2..12..2}
+for i in {2..8..2}
 do
   echo "With ${i} processes"
   time mpirun -np $i ./a.out
