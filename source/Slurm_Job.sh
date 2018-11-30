@@ -1,5 +1,4 @@
 #!/bin/bash
-#SBATCH -p RM
 #SBATCH -t 1:00:00
 #SBATCH -N 2
 #SBATCH --ntasks-per-node 4
