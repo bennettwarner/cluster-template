@@ -64,8 +64,6 @@ for i in range(0,6):
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/* /scratch"))
   else:
     node = request.XenVM("compute-" + str(i-2))
-    node.cores = 4
-    node.ram = 4096
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/client.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/client.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/* /scratch"))
@@ -75,7 +73,8 @@ for i in range(0,6):
     #node.addService(pg.Execute(shell="sh", command="sudo /local/repository/mountStorage.sh"))
     
   node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
-  
+  node.cores = 4
+  node.ram = 4096
   iface = node.addInterface("if" + str(i))
   iface.component_id = "eth1"
   iface.addAddress(pg.IPv4Address(prefixForIP + str(i + 1), "255.255.255.0"))
