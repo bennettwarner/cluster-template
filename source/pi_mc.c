@@ -16,7 +16,13 @@ int main(int argc, char* argv[]) {
   int rank, size, squareWidth;
   MPI_Status status;
   double start, stop, tpar, tcomm;
-  double globaldata[12] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+  double globaldata[48] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+                           -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+                           -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+                           -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+/*modified to allow up to 48 processess
+Has to be perfect square processes for good prediction*/
+
 
   nPointsTotal = atoi(argv[1]);
 
@@ -65,10 +71,7 @@ int main(int argc, char* argv[]) {
         }
     }
     printf("\n");
-
-
   } 
-
   MPI_Finalize();
   return 0;
 }
