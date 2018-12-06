@@ -48,8 +48,8 @@ for i in range(0,6):
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/mountHead.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/install_mpi.sh"))
     
-    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/slurm_install.sh"))
-    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/slurmctld.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/slurm_install.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/slurmctld.sh"))
 
     
     node.addService(pg.Execute(shell="sh", command="sudo chmod 777 /local/repository/passwordless.sh"))
@@ -59,9 +59,9 @@ for i in range(0,6):
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/* /users/al844976/scratch"))
   elif i == 1:
     node = request.XenVM("metadata")
-    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/slurm_install.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/slurm_install.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/slurm/slurmdbd.conf /etc"))
-    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/slurmdbd.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/slurmdbd.sh"))
     
   elif i == 2:
     node = request.XenVM("storage")
@@ -76,8 +76,8 @@ for i in range(0,6):
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/client.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/* /scratch"))
     
-    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/slurm_install.sh"))
-    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/slurmd.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/slurm_install.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/slurmd.sh"))
     #node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setupNFS_Storage.sh"))
     #node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setupNFS_Storage.sh"))
     #node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/mountStorage.sh"))
