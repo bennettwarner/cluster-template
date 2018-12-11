@@ -64,6 +64,7 @@ for i in range(0,6):
     node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/slurm_install.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/slurm/slurmdbd.conf /usr/local/etc/"))
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/slurm/cgroup.conf /usr/local/etc/"))
+    node.addService(pg.Execute(shell="sh", command="mysql -u root < /local/repository/slurm/sqlSetup"))
     node.addService(pg.Execute(shell="sh", command="sudo bash usr/local/etc/slurmdbd"))
     
   elif i == 2:
