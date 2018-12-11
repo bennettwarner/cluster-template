@@ -16,11 +16,10 @@ int main(int argc, char* argv[]) {
   int rank, size, squareWidth;
   MPI_Status status;
   double start, stop, tpar, tcomm;
-  double globaldata[48] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-                           -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+  double globaldata[36] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
                            -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
                            -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
-/*modified to allow up to 48 processess
+/*modified to allow up to 36 processess
 Has to be perfect square processes for good prediction*/
 
 
