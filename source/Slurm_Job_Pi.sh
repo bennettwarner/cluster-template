@@ -17,19 +17,19 @@ cp ~/examples/mpi/pi_mc.c ./
 mpicc -o a.out /scratch/pi_mc.c -lm
 
 echo "With 1 processes"
-time mpirun -np 1 ./a.out 100000
+time mpirun -np 1 --hostfile ./machine_list ./a.out 100000
   
 echo "With 4 processes"
-time mpirun -np 4 ./a.out 100000
+time mpirun -np 4 --hostfile ./machine_list ./a.out 100000
   
 echo "With 9 processes"
-time mpirun -np 9 ./a.out 100000
+time mpirun -np 9 --hostfile ./machine_list ./a.out 100000
   
 echo "With 16 processes"
-time mpirun -np 16 ./a.out 100000
+time mpirun -np 16 --hostfile ./machine_list ./a.out 100000
   
 echo "With 25 processes"
-time mpirun -np 25 ./a.out 100000
+time mpirun -np 25 --hostfile ./machine_list ./a.out 100000
   
 echo "With 36 processes"
-time mpirun -np 36 ./a.out 100000
+time mpirun -np 36 --hostfile ./machine_list ./a.out 100000
