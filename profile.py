@@ -67,7 +67,7 @@ for i in range(0,15):
     node.addService(pg.Execute(shell="sh", command="sudo systemctl enable mariadb"))
     node.addService(pg.Execute(shell="sh", command="sudo systemctl start mariadb"))
     node.addService(pg.Execute(shell="sh", command="mysql -u root < /local/repository/slurm/sqlSetup.sh"))
-    node.addService(pg.Execute(shell="sh", command="sudo usr/local/etc/slurmdbd"))
+    node.addService(pg.Execute(shell="sh", command="sudo /usr/local/etc/slurmdbd"))
     
   elif i == 2:
     node = request.XenVM("storage")
