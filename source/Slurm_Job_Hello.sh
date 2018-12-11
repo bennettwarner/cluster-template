@@ -9,7 +9,7 @@ set -x
 # where do I start?
 echo $SLURM_SUBMIT_DIR
 
-module load mpi/gcc_openmpi
+#module load mpi/gcc_openmpi
 
 #Assuming hello.c is in $scratch
 cd /scratch
