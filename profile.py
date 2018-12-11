@@ -49,6 +49,7 @@ for i in range(0,6):
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/install_mpi.sh"))
     
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/slurm/slurm.conf /usr/local/etc/"))
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/slurm/cgroup.conf /usr/local/etc/"))
     node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/slurm_install.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo bash /usr/local/etc/slurmctld"))
 
@@ -62,6 +63,7 @@ for i in range(0,6):
     node = request.XenVM("metadata")
     node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/slurm_install.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/slurm/slurmdbd.conf /usr/local/etc/"))
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/slurm/cgroup.conf /usr/local/etc/"))
     node.addService(pg.Execute(shell="sh", command="sudo bash usr/local/etc/slurmdbd"))
     
   elif i == 2:
@@ -78,6 +80,7 @@ for i in range(0,6):
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/* /scratch"))
     
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/slurm/slurm.conf /usr/local/etc/"))
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/slurm/cgroup.conf /usr/local/etc/"))
     node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/slurm_install.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo bash /usr/local/etc/slurmd"))
 
