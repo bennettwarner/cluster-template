@@ -36,7 +36,7 @@ prefixForIP = "192.168.1."
 
 link = request.LAN("lan")
 
-for i in range(0,6):
+for i in range(0,15):
   if i == 0:
     node = request.XenVM("head")
     node.routable_control_ip = "true"
@@ -51,7 +51,7 @@ for i in range(0,6):
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/slurm/slurm.conf /usr/local/etc/"))
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/slurm/cgroup.conf /usr/local/etc/"))
     node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/slurm_install.sh"))
-    node.addService(pg.Execute(shell="sh", command="sudo bash /usr/local/etc/slurmctld"))
+    node.addService(pg.Execute(shell="sh", command="sudo /usr/local/etc/slurmctld"))
 
     
     node.addService(pg.Execute(shell="sh", command="sudo chmod 777 /local/repository/passwordless.sh"))
@@ -67,7 +67,7 @@ for i in range(0,6):
     node.addService(pg.Execute(shell="sh", command="sudo systemctl enable mariadb"))
     node.addService(pg.Execute(shell="sh", command="sudo systemctl start mariadb"))
     node.addService(pg.Execute(shell="sh", command="mysql -u root < /local/repository/slurm/sqlSetup.sh"))
-    node.addService(pg.Execute(shell="sh", command="sudo bash usr/local/etc/slurmdbd"))
+    node.addService(pg.Execute(shell="sh", command="sudo usr/local/etc/slurmdbd"))
     
   elif i == 2:
     node = request.XenVM("storage")
@@ -85,7 +85,7 @@ for i in range(0,6):
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/slurm/slurm.conf /usr/local/etc/"))
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/slurm/cgroup.conf /usr/local/etc/"))
     node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/slurm_install.sh"))
-    node.addService(pg.Execute(shell="sh", command="sudo bash /usr/local/etc/slurmd"))
+    node.addService(pg.Execute(shell="sh", command="sudo /usr/local/etc/slurmd"))
 
     
   node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
